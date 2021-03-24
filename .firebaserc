@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fleo-64bb8": {
+      "hosting": {
+        "pk2-angular": [
+          "fleo-64bb8"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fleo-64bb8"
+  }
+}
