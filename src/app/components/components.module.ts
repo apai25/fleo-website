@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 
 ;
 import { ComponentsComponent } from './components.component';
+import { TeamComponent } from './team/team.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -19,6 +20,7 @@ import { ComponentsComponent } from './components.component';
     ],
     declarations: [
         ComponentsComponent,
+        TeamComponent,
 
     ],
     entryComponents: [],

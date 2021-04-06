@@ -14,6 +14,7 @@ import { ComponentsModule } from './components/components.module';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { AboutComponent } from './components/about/about.component';
 import { LoginComponent } from './components/login/login.component';
+import { TeamComponent } from './components/team/team.component';
 
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';

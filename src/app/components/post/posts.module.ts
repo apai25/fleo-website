@@ -15,6 +15,7 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatInputModule } from '@angular/material/input'
 import { FormsModule } from '@angular/forms';
 import { AuthGuardService } from 'app/core/auth-guard.service';
+import { WorkshopsService } from '../workshops/workshops.service';
 
 const routes: Routes = [
   { path: '', component: PostListComponent},
@@ -41,6 +42,6 @@ const routes: Routes = [
     PostDetailComponent,
     PostListComponent
   ],
-  providers: [PostService]
+  providers: [PostService, WorkshopsService]
 })
 export class PostsModule {}

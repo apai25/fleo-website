@@ -8,6 +8,7 @@ describe('PostDashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+
       declarations: [ PostDashboardComponent ]
     })
     .compileComponents();

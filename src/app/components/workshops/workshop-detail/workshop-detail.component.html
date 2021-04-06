@@ -1,0 +1,41 @@
+<ng-container *ngIf="Workshop">
+
+
+    <div [hidden]="!editing">
+      <mat-card>
+        <h1>Edit Workshop</h1>
+          <mat-form-field>
+            <input matInput placeholder="Workshop title" [(ngModel)]="Workshop.title" name="title">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <textarea matInput placeholder="Workshop content" [(ngModel)]="Workshop.content" name="content" rows="10"></textarea>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button (click)="updateWorkshop()" color="accent">Save</button>
+          <button mat-button (click)="editing=false" *ngIf="editing">Cancel</button>
+    </mat-card>
+    </div>
+  
+    <div [hidden]="editing">
+      <mat-card>
+        <img mat-card-image src="{{Workshop.image}}" alt="{{Workshop.title}}">
+        <h2>{{Workshop.title}}</h2>
+        <p>
+          <small>Workshoped by {{Workshop.author}} &bull; on {{Workshop.published.toDate() | date:"fullDate"}}</small>
+        </p>
+        <mat-card-content>
+          <p>{{ Workshop.content }}</p>
+        </mat-card-content>
+        <mat-card-actions align="end" *ngIf="auth.currentUserId === Workshop.authorId">
+          <button mat-icon-button (click)="editing=true">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="delete(Workshop.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </ng-container>
+  
