@@ -1,9 +1,40 @@
-<footer class="page-footer font-small blue">
+<footer class="footer">
+  <p class="subtitle">Developed By: </p>
+  <p>Abhinav Srinivas &nbsp;&nbsp;&nbsp;&nbsp;Anirudh Pai &nbsp;&nbsp;&nbsp;&nbsp;Satvik Eltepu &nbsp;&nbsp;&nbsp;&nbsp;Vasanth Pugalenthi &nbsp;&nbsp;&nbsp;&nbsp;Kanishka Verose</p>
+  <a routerLink="/homepage"><img class="footer-logo" src="../../../assets/img/fleologo.png"></a>
+  <div class="navbar-collapse" id="navbarToggler">
+      <ul class="navbar-nav ml-auto">
 
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2021 Copyright:
-      <a> FLEO.online</a> Made By Abhinav Srinivas | Vasanth Pugalenthi | Anirudh Pai | Satvik Eltepu
-    </div>
-    <!-- Copyright -->
-  
-  </footer>
+      
+        <li class="nav-item" *ngIf="!isDocumentation()">
+            <a style="color:black" class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="" target="_blank">
+                <i class="fa fa-twitter"></i>
+                <p class="d-lg-none">Twitter</p>
+            </a>
+        </li>
+        <li class="nav-item" *ngIf="!isDocumentation()">
+            <a style="color:black" class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="" target="_blank">
+                <i class="fa fa-facebook-square"></i>
+                <p class="d-lg-none">Facebook</p>
+            </a>
+        </li>
+        <li class="nav-item" *ngIf="!isDocumentation()">
+            <a style="color:black" class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="http://www.instagram.com/fleo.online/" target="_blank">
+                <i class="fa fa-instagram"></i>
+                <p class="d-lg-none">Instagram</p>
+            </a>
+        </li>
+        <li class="nav-item" *ngIf="!isDocumentation() ">
+            <a style="color:black" class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="" target="_blank">
+                <i class="fa fa-github"></i>
+                <p class="d-lg-none">GitHub</p>
+            </a>
+        </li>
+        <li class="nav-item" *ngIf="!isDocumentation()">
+            <a (click)="logout()" class="nav-link" style="color:black"><i class="nc-icon nc-stre-left"></i> Log Out</a>
+        </li>
+    </ul>
+
+</div>
+  <div class="copyright">Copyright 2021 FLEO Online. All rights reserved.</div>
+</footer>
