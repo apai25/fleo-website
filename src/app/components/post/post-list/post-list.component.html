@@ -1,4 +1,5 @@
 <section>
+  <div fxLayout="column" fxLayoutAlign="start start">
   <mat-card *ngFor="let post of posts | async">
     <mat-card-content routerLink="{{post.id}}">
       <img mat-card-image src="{{post.image}}" alt="{{post.title}}">
@@ -13,4 +14,5 @@
       </button>
     </mat-card-actions>
   </mat-card>
+</div>
 </section>

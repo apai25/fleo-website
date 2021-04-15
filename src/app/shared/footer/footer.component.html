@@ -3,38 +3,52 @@
   <p>Abhinav Srinivas &nbsp;&nbsp;&nbsp;&nbsp;Anirudh Pai &nbsp;&nbsp;&nbsp;&nbsp;Satvik Eltepu &nbsp;&nbsp;&nbsp;&nbsp;Vasanth Pugalenthi &nbsp;&nbsp;&nbsp;&nbsp;Kanishka Verose</p>
   <a routerLink="/homepage"><img class="footer-logo" src="../../../assets/img/fleologo.png"></a>
   <div class="navbar-collapse" id="navbarToggler">
-      <ul class="navbar-nav ml-auto">
-
-      
-        <li class="nav-item" *ngIf="!isDocumentation()">
-            <a style="color:black" class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="" target="_blank">
-                <i class="fa fa-twitter"></i>
-                <p class="d-lg-none">Twitter</p>
-            </a>
-        </li>
-        <li class="nav-item" *ngIf="!isDocumentation()">
-            <a style="color:black" class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="" target="_blank">
-                <i class="fa fa-facebook-square"></i>
-                <p class="d-lg-none">Facebook</p>
-            </a>
-        </li>
-        <li class="nav-item" *ngIf="!isDocumentation()">
-            <a style="color:black" class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="http://www.instagram.com/fleo.online/" target="_blank">
-                <i class="fa fa-instagram"></i>
-                <p class="d-lg-none">Instagram</p>
-            </a>
-        </li>
-        <li class="nav-item" *ngIf="!isDocumentation() ">
-            <a style="color:black" class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="" target="_blank">
-                <i class="fa fa-github"></i>
-                <p class="d-lg-none">GitHub</p>
-            </a>
-        </li>
-        <li class="nav-item" *ngIf="!isDocumentation()">
-            <a (click)="logout()" class="nav-link" style="color:black"><i class="nc-icon nc-stre-left"></i> Log Out</a>
-        </li>
-    </ul>
-
+      <div id="div_top_hypers">
+        <ul id="ul_top_hypers">
+            <li class="nav-item" *ngIf="!isDocumentation()">
+                <a style="color:rgb(0, 157, 58)" class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                    <p class="d-lg-none">Twitter</p>
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="!isDocumentation()">
+                <a style="color:rgb(0, 157, 58)" class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="" target="_blank">
+                    <i class="fa fa-facebook-square"></i>
+                    <p class="d-lg-none">Facebook</p>
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="!isDocumentation()">
+                <a style="color:rgb(0, 157, 58)" class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="http://www.instagram.com/fleo.online/" target="_blank">
+                    <i class="fa fa-instagram"></i>
+                    <p class="d-lg-none">Instagram</p>
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="!isDocumentation() ">
+                <a style="color:rgb(0, 157, 58)" class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="" target="_blank">
+                    <i class="fa fa-github"></i>
+                    <p class="d-lg-none">GitHub</p>
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="!isDocumentation()">
+                <a routerLink="/about" class="nav-link" style="color:rgb(222, 148, 0)"><i class="nc-icon nc-tag-content"></i> About</a>
+            </li>
+            <li class="nav-item" *ngIf="!isDocumentation()">
+                <a routerLink="/blog" class="nav-link" style="color:rgb(222, 148, 0)"><i class="nc-icon nc-single-copy-04"></i> Newsletter</a>
+            </li>
+            <li class="nav-item" *ngIf="!isDocumentation()">
+                <a routerLink="/workshops" class="nav-link" style="color:rgb(222, 148, 0)"><i class="nc-icon nc-ruler-pencil"></i> Workshops</a>
+            </li>
+            <li class="nav-item" *ngIf="!isDocumentation()">
+                <a routerLink="/team" class="nav-link" style="color:rgb(222, 148, 0)"><i class="nc-icon nc-badge"></i> The Team</a>
+            </li>
+            <li class="nav-item" *ngIf="!isDocumentation() && isLoggedIn()">
+                <a routerLink="/blog/dashboard" class="nav-link" style="color:rgb(222, 148, 0)"><i class="nc-icon nc-planet"></i> Dashboard</a>
+            </li>
+            <li class="nav-item" *ngIf="!isDocumentation() && isLoggedIn() ">
+                <a (click)="logout()" class="nav-link" style="color:rgb(222, 148, 0)"><i class="nc-icon nc-stre-left"></i> Log Out</a>
+            </li>
+        </ul>
+    </div>  
 </div>
   <div class="copyright">Copyright 2021 FLEO Online. All rights reserved.</div>
 </footer>
