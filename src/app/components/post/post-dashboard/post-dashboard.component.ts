@@ -17,6 +17,9 @@ export class PostDashboardComponent implements OnInit {
   content: string
   image: string
   title: string
+  author: string
+  workauthor: string;
+  like: 0;
 
   saving = 'Create Post'
 
@@ -34,14 +37,27 @@ export class PostDashboardComponent implements OnInit {
   ngOnInit() {}
 
   createPost() {
-    const postData = {
-      author: this.auth.authState.displayName || this.auth.authState.email,
-      authorId: this.auth.currentUserId,
-      content: this.content,
-      image: this.image || null,
-      published: new Date(),
-      title: this.title
+    console.log(this.author)
+    if (this.author == null) {
+      var postData = {
+        author: this.auth.authState.displayName || this.auth.authState.email,
+        authorId: this.auth.currentUserId,
+        content: this.content,
+        image: this.image || null,
+        published: new Date(),
+        title: this.title,
+      }
+    } else {
+      postData = {
+        author: this.author,
+        authorId: this.auth.currentUserId,
+        content: this.content,
+        image: this.image || null,
+        published: new Date(),
+        title: this.title,
+      }
     }
+
     this.postService.create(postData)
     this.title = ''
     this.content = ''
@@ -50,6 +66,8 @@ export class PostDashboardComponent implements OnInit {
     this.saving = 'Post Created!'
     setTimeout(() => (this.saving = 'Create Post'), 3000)
     this.router.navigateByUrl('blog')
+    
+
   }
 
   async uploadImage(event) {
@@ -69,14 +87,26 @@ export class PostDashboardComponent implements OnInit {
   }
 
   createWPost() {
-    const postData = {
-      author: this.auth.authState.displayName || this.auth.authState.email,
-      authorId: this.auth.currentUserId,
-      content: this.content,
-      image: this.image || null,
-      published: new Date(),
-      title: this.title
+    if (this.workauthor == null) {
+      var postData = {
+        author: this.auth.authState.displayName || this.auth.authState.email,
+        authorId: this.auth.currentUserId,
+        content: this.content,
+        image: this.image || null,
+        published: new Date(),
+        title: this.title,
+      }
+    } else {
+      postData = {
+        author: this.workauthor,
+        authorId: this.auth.currentUserId,
+        content: this.content,
+        image: this.image || null,
+        published: new Date(),
+        title: this.title,
+      }
     }
+
     this.workshopService.create(postData)
     this.title = ''
     this.content = ''
