@@ -46,6 +46,8 @@ export class PostDashboardComponent implements OnInit {
         image: this.image || null,
         published: new Date(),
         title: this.title,
+        upLike: 0,
+        downLike: 0
       }
     } else {
       postData = {
@@ -55,6 +57,8 @@ export class PostDashboardComponent implements OnInit {
         image: this.image || null,
         published: new Date(),
         title: this.title,
+        upLike: 0,
+        downLike: 0
       }
     }
 

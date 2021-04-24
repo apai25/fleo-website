@@ -4,6 +4,13 @@ import firebase from 'firebase/app';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+  AngularFirestoreDocument
+} from '@angular/fire/firestore'
+
+import { Users } from './users'
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +18,13 @@ import { first } from 'rxjs/operators';
 export class AuthService {
   authState: any = null
   user: Observable<firebase.User>
+  usersCollection: AngularFirestoreCollection<Users>
   
-  availableEmails: string[] = ["iepicfellowkun@gmail.com", "abhisrin@gmail.com"]
 
-  constructor(public afAuth: AngularFireAuth, public router: Router) { 
+  constructor(public afAuth: AngularFireAuth, public router: Router,private afs: AngularFirestore) { 
     this.afAuth.authState.subscribe(data => this.authState = data)
     this.user = afAuth.authState;
+    this.usersCollection = this.afs.collection('users');
   }
 
   get authenticated(): boolean {
@@ -30,11 +38,11 @@ export class AuthService {
   isLoggedIn() {
     return this.afAuth.authState.pipe(first()).toPromise();
  }
-
-  async login() {
-
+ //gotta move to email sign in
+  async login(data: Users) {
   this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(res => {
     this.router.navigateByUrl('/blog')
+    this.usersCollection.add(data) //specify userid as document id in firebase
     localStorage.setItem("loggedin", "yes")
     }
   ).catch(err =>{

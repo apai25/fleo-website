@@ -6,6 +6,10 @@
       <p>
         <small>Posted by {{post.author}} &bull; on {{post.published.toDate() | date:"fullDate"}}</small>
       </p>
+      <mat-card-actions align="end"> 
+          <mat-icon>thumb_up</mat-icon><small>{{post.upLike}}</small>
+          <mat-icon>thumb_down</mat-icon><small>{{post.downLike}}</small>
+    </mat-card-actions>
     </mat-card-content>
     <mat-card-actions align="end" *ngIf="auth.currentUserId === post.authorId">
       <button mat-icon-button (click)="delete(post.id)">
