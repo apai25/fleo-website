@@ -4809,14 +4809,31 @@ var PostDashboardComponent = /** @class */ (function () {
     PostDashboardComponent.prototype.ngOnInit = function () { };
     PostDashboardComponent.prototype.createPost = function () {
         var _this = this;
-        var postData = {
-            author: this.auth.authState.displayName || this.auth.authState.email,
-            authorId: this.auth.currentUserId,
-            content: this.content,
-            image: this.image || null,
-            published: new Date(),
-            title: this.title
-        };
+        console.log(this.author);
+        if (this.author == null) {
+            var postData = {
+                author: this.auth.authState.displayName || this.auth.authState.email,
+                authorId: this.auth.currentUserId,
+                content: this.content,
+                image: this.image || null,
+                published: new Date(),
+                title: this.title,
+                upLike: 0,
+                downLike: 0
+            };
+        }
+        else {
+            postData = {
+                author: this.author,
+                authorId: this.auth.currentUserId,
+                content: this.content,
+                image: this.image || null,
+                published: new Date(),
+                title: this.title,
+                upLike: 0,
+                downLike: 0
+            };
+        }
         this.postService.create(postData);
         this.title = '';
         this.content = '';
@@ -4857,14 +4874,26 @@ var PostDashboardComponent = /** @class */ (function () {
     };
     PostDashboardComponent.prototype.createWPost = function () {
         var _this = this;
-        var postData = {
-            author: this.auth.authState.displayName || this.auth.authState.email,
-            authorId: this.auth.currentUserId,
-            content: this.content,
-            image: this.image || null,
-            published: new Date(),
-            title: this.title
-        };
+        if (this.workauthor == null) {
+            var postData = {
+                author: this.auth.authState.displayName || this.auth.authState.email,
+                authorId: this.auth.currentUserId,
+                content: this.content,
+                image: this.image || null,
+                published: new Date(),
+                title: this.title,
+            };
+        }
+        else {
+            postData = {
+                author: this.workauthor,
+                authorId: this.auth.currentUserId,
+                content: this.content,
+                image: this.image || null,
+                published: new Date(),
+                title: this.title,
+            };
+        }
         this.workshopService.create(postData);
         this.title = '';
         this.content = '';
@@ -5030,8 +5059,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createStorageRef", function() { return createStorageRef; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createUploadTask", function() { return createUploadTask; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromTask", function() { return fromTask; });
-/* harmony import */ var _Users_abhinavsrinivas_programming_projects_FLEO_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/classCallCheck */ "1OyB");
-/* harmony import */ var _Users_abhinavsrinivas_programming_projects_FLEO_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/createClass */ "vuIU");
+/* harmony import */ var _Users_anirudhpai_Desktop_fleo_website_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/classCallCheck */ "1OyB");
+/* harmony import */ var _Users_anirudhpai_Desktop_fleo_website_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/createClass */ "vuIU");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "qCKp");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "fXoL");
@@ -5338,7 +5367,7 @@ var AngularFireStorage = /*#__PURE__*/function () {
    */
   function AngularFireStorage(options, nameOrConfig, storageBucket, // tslint:disable-next-line:ban-types
   platformId, zone, maxUploadRetryTime, maxOperationRetryTime) {
-    Object(_Users_abhinavsrinivas_programming_projects_FLEO_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, AngularFireStorage);
+    Object(_Users_anirudhpai_Desktop_fleo_website_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, AngularFireStorage);
 
     this.schedulers = new _angular_fire__WEBPACK_IMPORTED_MODULE_5__["ɵAngularFireSchedulers"](zone);
     this.keepUnstableUntilFirst = Object(_angular_fire__WEBPACK_IMPORTED_MODULE_5__["ɵkeepUnstableUntilFirstFactory"])(this.schedulers);
@@ -5376,7 +5405,7 @@ var AngularFireStorage = /*#__PURE__*/function () {
    */
 
 
-  Object(_Users_abhinavsrinivas_programming_projects_FLEO_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(AngularFireStorage, [{
+  Object(_Users_anirudhpai_Desktop_fleo_website_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(AngularFireStorage, [{
     key: "ref",
     value: function ref(path) {
       return createStorageRef(this.storage.ref(path), this.schedulers, this.keepUnstableUntilFirst);
@@ -5555,7 +5584,7 @@ var GetDownloadURLPipe = /*#__PURE__*/function () {
    * @param {?} cdr
    */
   function GetDownloadURLPipe(storage, cdr) {
-    Object(_Users_abhinavsrinivas_programming_projects_FLEO_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, GetDownloadURLPipe);
+    Object(_Users_anirudhpai_Desktop_fleo_website_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, GetDownloadURLPipe);
 
     this.storage = storage;
     this.asyncPipe = new _angular_common__WEBPACK_IMPORTED_MODULE_7__["AsyncPipe"](cdr);
@@ -5566,7 +5595,7 @@ var GetDownloadURLPipe = /*#__PURE__*/function () {
    */
 
 
-  Object(_Users_abhinavsrinivas_programming_projects_FLEO_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(GetDownloadURLPipe, [{
+  Object(_Users_anirudhpai_Desktop_fleo_website_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(GetDownloadURLPipe, [{
     key: "transform",
     value: function transform(path) {
       if (path !== this.path) {
@@ -5630,7 +5659,7 @@ GetDownloadURLPipe.ctorParameters = function () {
 if (false) {}
 
 var GetDownloadURLPipeModule = function GetDownloadURLPipeModule() {
-  Object(_Users_abhinavsrinivas_programming_projects_FLEO_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, GetDownloadURLPipeModule);
+  Object(_Users_anirudhpai_Desktop_fleo_website_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, GetDownloadURLPipeModule);
 };
 
 GetDownloadURLPipeModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineNgModule"]({
@@ -5668,7 +5697,7 @@ GetDownloadURLPipeModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵ�
 
 
 var AngularFireStorageModule = function AngularFireStorageModule() {
-  Object(_Users_abhinavsrinivas_programming_projects_FLEO_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, AngularFireStorageModule);
+  Object(_Users_anirudhpai_Desktop_fleo_website_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, AngularFireStorageModule);
 };
 
 AngularFireStorageModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineNgModule"]({
@@ -5834,7 +5863,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section>\n    <mat-accordion>\n      <mat-expansion-panel>\n  \n        <mat-expansion-panel-header>\n          <mat-panel-title>\n            Create a Newsletter Post\n          </mat-panel-title>\n        </mat-expansion-panel-header>\n  \n        <input type=\"file\" name=\"file\" id=\"file\" (change)=\"uploadImage($event)\">\n        <div [hidden]=\"!uploadPercent\">\n          <mat-progress-bar mode=\"determinate\" value=\"{{ uploadPercent | async }}\"></mat-progress-bar>\n        </div>\n        <div [hidden]=\"!image\">\n          <img [src]=\"image || '//:0' \">\n        </div>\n  \n        <mat-form-field>\n          <input matInput placeholder=\"Post title\" [(ngModel)]=\"title\" name=\"title\">\n        </mat-form-field>\n        <br>\n        <mat-form-field>\n          <textarea matInput placeholder=\"Post content\" [(ngModel)]=\"content\" name=\"content\" rows=\"10\"></textarea>\n        </mat-form-field>\n        <br>\n        <button mat-raised-button (click)=\"createPost()\" color=\"accent\" >{{saving}}</button>\n  \n      </mat-expansion-panel>\n    </mat-accordion>\n  </section>\n  \n  <section>\n    <mat-accordion>\n      <mat-expansion-panel>\n  \n        <mat-expansion-panel-header>\n          <mat-panel-title>\n            Create a Workshop Post\n          </mat-panel-title>\n        </mat-expansion-panel-header>\n  \n        <input type=\"file\" name=\"file\" id=\"file\" (change)=\"uploadImage($event)\">\n        <div [hidden]=\"!uploadPercent\">\n          <mat-progress-bar mode=\"determinate\" value=\"{{ uploadPercent | async }}\"></mat-progress-bar>\n        </div>\n        <div [hidden]=\"!image\">\n          <img [src]=\"image || '//:0' \">\n        </div>\n  \n        <mat-form-field>\n          <input matInput placeholder=\"Post title\" [(ngModel)]=\"title\" name=\"title\">\n        </mat-form-field>\n        <br>\n        <mat-form-field>\n          <textarea matInput placeholder=\"Post content\" [(ngModel)]=\"content\" name=\"content\" rows=\"10\"></textarea>\n        </mat-form-field>\n        <br>\n        <button mat-raised-button (click)=\"createWPost()\" color=\"accent\" >{{saving}}</button>\n  \n      </mat-expansion-panel>\n    </mat-accordion>\n  </section>\n  \n   ");
+/* harmony default export */ __webpack_exports__["default"] = ("<section>\n    <mat-accordion>\n      <mat-expansion-panel>\n  \n        <mat-expansion-panel-header>\n          <mat-panel-title>\n            Create a Newsletter Post\n          </mat-panel-title>\n        </mat-expansion-panel-header>\n  \n        <input type=\"file\" name=\"file\" id=\"file\" (change)=\"uploadImage($event)\">\n        <div [hidden]=\"!uploadPercent\">\n          <mat-progress-bar mode=\"determinate\" value=\"{{ uploadPercent | async }}\"></mat-progress-bar>\n        </div>\n        <div [hidden]=\"!image\">\n          <img [src]=\"image || '//:0' \">\n        </div>\n  \n        <mat-form-field>\n          <input matInput placeholder=\"Post title\" [(ngModel)]=\"title\" name=\"title\">\n        </mat-form-field>\n        <br>\n        <mat-form-field>\n          <input matInput placeholder=\"Author (Default Email Username)\" [(ngModel)]=\"author\" name=\"author\">\n        </mat-form-field>\n        <br>\n        <mat-form-field>\n          <textarea matInput placeholder=\"Post content\" [(ngModel)]=\"content\" name=\"content\" rows=\"10\"></textarea>\n        </mat-form-field>\n        <br>\n        <button mat-raised-button (click)=\"createPost()\" color=\"accent\" >{{saving}}</button>\n  \n      </mat-expansion-panel>\n    </mat-accordion>\n  </section>\n  \n  <section>\n    <mat-accordion>\n      <mat-expansion-panel>\n  \n        <mat-expansion-panel-header>\n          <mat-panel-title>\n            Create a Workshop Post\n          </mat-panel-title>\n        </mat-expansion-panel-header>\n  \n        <input type=\"file\" name=\"file\" id=\"file\" (change)=\"uploadImage($event)\">\n        <div [hidden]=\"!uploadPercent\">\n          <mat-progress-bar mode=\"determinate\" value=\"{{ uploadPercent | async }}\"></mat-progress-bar>\n        </div>\n        <div [hidden]=\"!image\">\n          <img [src]=\"image || '//:0' \">\n        </div>\n  \n        <mat-form-field>\n          <input matInput placeholder=\"Post title\" [(ngModel)]=\"title\" name=\"title\">\n        </mat-form-field>\n        <br>\n        <mat-form-field>\n          <input matInput placeholder=\"Author (Default Email Username)\" [(ngModel)]=\"workauthor\" name=\"workauthor\">\n        </mat-form-field>\n        <br>\n        <mat-form-field>\n          <textarea matInput placeholder=\"Post content\" [(ngModel)]=\"content\" name=\"content\" rows=\"10\"></textarea>\n        </mat-form-field>\n        <br>\n        <button mat-raised-button (click)=\"createWPost()\" color=\"accent\" >{{saving}}</button>\n  \n      </mat-expansion-panel>\n    </mat-accordion>\n  </section>\n  \n   ");
 
 /***/ })
 

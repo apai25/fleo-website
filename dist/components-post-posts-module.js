@@ -82,7 +82,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ng-container *ngIf=\"post\">\n\n\n    <div [hidden]=\"!editing\">\n      <mat-card>\n        <h1>Edit Post</h1>\n          <mat-form-field>\n            <input matInput placeholder=\"Post title\" [(ngModel)]=\"post.title\" name=\"title\">\n          </mat-form-field>\n          <br>\n          <mat-form-field>\n            <textarea matInput placeholder=\"Post content\" [(ngModel)]=\"post.content\" name=\"content\" rows=\"10\"></textarea>\n          </mat-form-field>\n          <br>\n          <button mat-raised-button (click)=\"updatePost()\" color=\"accent\">Save</button>\n          <button mat-button (click)=\"editing=false\" *ngIf=\"editing\">Cancel</button>\n    </mat-card>\n    </div>\n  \n    <div [hidden]=\"editing\">\n      <mat-card>\n        <img mat-card-image src=\"{{post.image}}\" alt=\"{{post.title}}\">\n        <h2>{{post.title}}</h2>\n        <p>\n          <small>Posted by {{post.author}} &bull; on {{post.published.toDate() | date:\"fullDate\"}}</small>\n        </p>\n        <mat-card-content>\n          <p>{{ post.content }}</p>\n        </mat-card-content>\n        <mat-card-actions align=\"end\" *ngIf=\"auth.currentUserId === post.authorId\">\n          <button mat-icon-button (click)=\"editing=true\">\n            <mat-icon>edit</mat-icon>\n          </button>\n          <button mat-icon-button (click)=\"delete(post.id)\">\n            <mat-icon>delete</mat-icon>\n          </button>\n        </mat-card-actions>\n      </mat-card>\n    </div>\n  </ng-container>\n  ");
+/* harmony default export */ __webpack_exports__["default"] = ("<ng-container *ngIf=\"post\">\n\n\n    <div [hidden]=\"!editing\">\n      <mat-card>\n        <h1>Edit Post</h1>\n          <mat-form-field>\n            <input matInput placeholder=\"Post title\" [(ngModel)]=\"post.title\" name=\"title\">\n          </mat-form-field>\n          <br>\n          <mat-form-field>\n            <textarea matInput placeholder=\"Post content\" [(ngModel)]=\"post.content\" name=\"content\" rows=\"10\"></textarea>\n          </mat-form-field>\n          <br>\n          <button mat-raised-button (click)=\"updatePost()\" color=\"accent\">Save</button>\n          <button mat-button (click)=\"editing=false\" *ngIf=\"editing\">Cancel</button>\n    </mat-card>\n    </div>\n  \n    <div [hidden]=\"editing\">\n      <mat-card>\n        <img mat-card-image src=\"{{post.image}}\" alt=\"{{post.title}}\">\n        <h2>{{post.title}}</h2>\n        <p>\n          <small>Posted by {{post.author}} &bull; on {{post.published.toDate() | date:\"fullDate\"}}</small>\n        </p>\n        <mat-card-content>\n          <p>{{ post.content }}</p>\n        </mat-card-content>\n        <mat-card-actions align=\"end\" *ngIf=\"auth.currentUserId !== post.authorId\"> \n          <button mat-icon-button (click)=\"thumbsUp()\">\n            <mat-icon>thumb_up</mat-icon><small>{{post.upLike}}</small>\n          </button>\n          <button mat-icon-button (click)=\"thumbsDown()\">\n            <mat-icon>thumb_down</mat-icon><small>{{post.downLike}}</small>\n          </button>\n      </mat-card-actions>\n        <mat-card-actions align=\"end\" *ngIf=\"auth.currentUserId === post.authorId\">\n          <button mat-icon-button (click)=\"editing=true\">\n            <mat-icon>edit</mat-icon>\n          </button>\n          <button mat-icon-button (click)=\"delete(post.id)\">\n            <mat-icon>delete</mat-icon>\n          </button>\n        </mat-card-actions>\n      </mat-card>\n    </div>\n  </ng-container>\n  ");
 
 /***/ }),
 
@@ -234,6 +234,20 @@ var PostDetailComponent = /** @class */ (function () {
         var id = this.route.snapshot.paramMap.get('id');
         this.postService.getPostData(id).subscribe(function (post) { return (_this.post = post); });
     };
+    PostDetailComponent.prototype.thumbsUp = function () {
+        var formData = {
+            upLike: this.post.upLike + 1
+        };
+        var id = this.route.snapshot.paramMap.get('id');
+        this.postService.update(id, formData);
+    };
+    PostDetailComponent.prototype.thumbsDown = function () {
+        var formData = {
+            downLike: this.post.downLike + 1
+        };
+        var id = this.route.snapshot.paramMap.get('id');
+        this.postService.update(id, formData);
+    };
     PostDetailComponent.prototype.updatePost = function () {
         var formData = {
             title: this.post.title,
@@ -281,7 +295,7 @@ var PostDetailComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section>\n  <div fxLayout=\"column\" fxLayoutAlign=\"start start\">\n  <mat-card *ngFor=\"let post of posts | async\">\n    <mat-card-content routerLink=\"{{post.id}}\">\n      <img mat-card-image src=\"{{post.image}}\" alt=\"{{post.title}}\">\n      <h2>{{post.title}}</h2>\n      <p>\n        <small>Posted by {{post.author}} &bull; on {{post.published.toDate() | date:\"fullDate\"}}</small>\n      </p>\n    </mat-card-content>\n    <mat-card-actions align=\"end\" *ngIf=\"auth.currentUserId === post.authorId\">\n      <button mat-icon-button (click)=\"delete(post.id)\">\n        <mat-icon>delete</mat-icon>\n      </button>\n    </mat-card-actions>\n  </mat-card>\n</div>\n</section>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<section>\n  <mat-card *ngFor=\"let post of posts | async\">\n    <mat-card-content routerLink=\"{{post.id}}\">\n      <img mat-card-image src=\"{{post.image}}\" alt=\"{{post.title}}\">\n      <h2>{{post.title}}</h2>\n      <p>\n        <small>Posted by {{post.author}} &bull; on {{post.published.toDate() | date:\"fullDate\"}}</small>\n      </p>\n      <mat-card-actions align=\"end\"> \n          <mat-icon>thumb_up</mat-icon><small>{{post.upLike}}</small>\n          <mat-icon>thumb_down</mat-icon><small>{{post.downLike}}</small>\n    </mat-card-actions>\n    </mat-card-content>\n    <mat-card-actions align=\"end\" *ngIf=\"auth.currentUserId === post.authorId\">\n      <button mat-icon-button (click)=\"delete(post.id)\">\n        <mat-icon>delete</mat-icon>\n      </button>\n    </mat-card-actions>\n  </mat-card>\n\n</section>\n");
 
 /***/ })
 
