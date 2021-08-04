@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 ;
 import { ComponentsComponent } from './components.component';
 import { TeamComponent } from './team/team.component';
+import { DonationsComponent } from './donations/donations.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -21,6 +22,7 @@ import { TeamComponent } from './team/team.component';
     declarations: [
         ComponentsComponent,
         TeamComponent,
+        DonationsComponent,
 
     ],
     entryComponents: [],

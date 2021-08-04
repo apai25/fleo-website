@@ -9,6 +9,7 @@ import {AboutComponent} from './components/about/about.component';
 import {LoginComponent} from './components/login/login.component'
 import { TeamComponent } from './components/team/team.component'
 import {PostsModule} from './components/post/posts.module'
+import { DonationsComponent } from './components/donations/donations.component';
 
 const routes: Routes =[
     { path: '', redirectTo: 'homepage', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes =[
     { path: 'home',             component: ComponentsComponent },
     { path: 'blog', loadChildren:  './components/post/posts.module#PostsModule'},
     { path: 'workshops', loadChildren:  './components/workshops/workshops.module#WorkshopsModule'},
+    { path: 'donations', component: DonationsComponent },
 ];
 
 @NgModule({

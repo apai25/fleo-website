@@ -27,7 +27,7 @@ import { MatExpansionModule } from '@angular/material/expansion'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MatIconModule } from '@angular/material/icon'
 import { MatToolbarModule } from '@angular/material/toolbar'
-import { MatInputModule } from '@angular/material/input'
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -40,7 +40,6 @@ import { MatInputModule } from '@angular/material/input'
     HomepageComponent,
     AboutComponent,
     LoginComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -61,7 +60,6 @@ import { MatInputModule } from '@angular/material/input'
     MatIconModule,
     MatInputModule,
     MatToolbarModule,
-    
   ],
   providers: [],
   bootstrap: [AppComponent]
